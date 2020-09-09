@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #container {
+      width: 300px;
+      height: 500px;
+      background-color: gray;
+      position: relative;
+    }
+
+    .bubble {
+      width: 50px;
+      height: 50px;
+      border: 2px solid red;
+      background-color: orange;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="bubble" style="left: 50px; top: 100px;"></div>
+    <div class="bubble" style="left: 150px; top: 200px;"></div>
+    <div class="bubble" style="left: 150px; top: 300px;"></div>
+    <div class="bubble" style="left: 220px; top: 400px;"></div>
+    <div class="bubble" style="left: 20px; top: 200px;"></div>
+    <div class="bubble" style="left: 90px; top: 300px;"></div>
+  </div>
+</body>
+<script>
+
+var bubbles = [
+  {left: 50, top: 100},
+  {left: 150, top: 200},
+  {left: 200, top: 400}
+]
+
+var html = "";
+for(var i=0; i<bubbles.length; i++){
+  html += `<div class="bubble" style="left: ${bubbles[i].left}px; top: ${bubbles[i].top}px;"></div>`
+}
+
+document.querySelector('#container').innerHTML = html;
+
+var bubbles_elements = document.querySelectorAll('.bubble');
+for(var i=0; i<bubbles_elements.length; i++){
+  bubbles_elements[i].addEventListener('click', function(e){
+    e.target.style.visibility = "hidden";
+  })
+}
+
+</script>
+</html>
